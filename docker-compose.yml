@@ -1,0 +1,17 @@
+
+##  Si se necesita instalar alguna libreria hacerlo dentro del contenedor con: `docker exec aveon-api_api_1 npm install ...`
+##    - Para que funcione correctamente hay que hacer `docker-compose up --build` por que los paquetes se instalan en el Dockerfile
+version: "3.8"
+services:
+  api:
+    build: "."
+    command: "npm run start-dev"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/app
+      - /usr/app/node_modules
+    environment:
+      NODE_ENV: ${NODE_ENV}
+
+
