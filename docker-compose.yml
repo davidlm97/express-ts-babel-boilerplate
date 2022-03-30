@@ -1,15 +1,14 @@
 version: "3.8"
 services:
   api:
-    build: "."
-    command: "npm run start-dev"
-    restart: "always"
+    image: node:16.14-alpine
+    restart: always
+    user: node
+    working_dir: /usr/src/app
+    command: sh -c "npm install && npm run start-dev"
     ports:
       - "3000:3000"
     volumes:
-      - .:/usr/app
-      - /usr/app/node_modules
+      - .:/usr/src/app
     environment:
       NODE_ENV: ${NODE_ENV}
-
-
