@@ -1,13 +1,27 @@
 {
   "root": true,
-
   "overrides": [
     {
-      "files": ["src/**/*.{ts,js}"], // Only lint files in src
+      "files": [
+        "src/**/*.{ts,js}" // Only lint files in src
+      ],
       "parser": "@typescript-eslint/parser",
-      "plugins": ["@typescript-eslint"],
-      "extends": ["eslint:recommended", "plugin:@typescript-eslint/eslint-recommended", "plugin:@typescript-eslint/recommended"],
-      "rules": {}
+      "plugins": [
+        "@typescript-eslint"
+      ],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "argsIgnorePattern": "next"
+          }
+        ]
+      }
     }
   ]
 }
